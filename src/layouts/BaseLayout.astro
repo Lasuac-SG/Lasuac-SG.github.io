@@ -51,7 +51,16 @@ const { pageTitle, description, image, showComments = false } = Astro.props;
       }
     </script>
 
-
+    <style is:global>
+      main img {
+        max-width: 100% !important;
+        height: auto !important;
+        display: block;
+        margin: 1.5rem auto; /* 保证图片居中，并与上下文字保持间距 */
+        border-radius: 8px;  /* 可选：为图片添加轻微圆角 */
+      }
+    </style>
 
 
 </html>
+
