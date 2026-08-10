@@ -19,12 +19,30 @@ const { pageTitle, description, image, showComments = false } = Astro.props;
 
     <body style="display: flex; flex-direction: column; min-height: 100vh; margin:0;">
         <div class="container" style="flex:1;">
-            <nav>
-                <a href="/">Home</a>
-                <a href="/blog">Blog</a>
-                <a href="/moments">随笔</a>
-                <a href="/guestbook">留言板</a>
+            
+            <!-- ================= 修改开始：新的导航栏 ================= -->
+            <nav style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 1px solid #eaeaea; padding-bottom: 10px;">
+                
+                <!-- 左侧：原本的文字导航链接，用一个 div 包裹起来横向排列 -->
+                <div style="display: flex; gap: 20px;">
+                    <a href="/">Home</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/moments">随笔</a>
+                    <a href="/guestbook">留言板</a>
+                </div>
+
+                <!-- 右侧：RSS SVG 按钮 -->
+                <a href="/rss.xml" target="_blank" title="RSS 订阅" style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 4px; transition: background-color 0.2s ease; color: #666;" onmouseover="this.style.backgroundColor='#f9f9f9'" onmouseout="this.style.backgroundColor='transparent'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 11a9 9 0 0 1 9 9"></path>
+                        <path d="M4 4a16 16 0 0 1 16 16"></path>
+                        <circle cx="5" cy="19" r="1"></circle>
+                    </svg>
+                </a>
+                
             </nav>
+            <!-- ================= 修改结束 ================= -->
+
             <main>
                 <slot />
                 {showComments && <Giscus />}
@@ -34,7 +52,6 @@ const { pageTitle, description, image, showComments = false } = Astro.props;
         <Footer />
 
     </body>
-
 
     <!-- ==================== Umami 统计代码 ==================== -->
     <script is:inline>

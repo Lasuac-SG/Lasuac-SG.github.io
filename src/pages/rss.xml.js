@@ -6,8 +6,8 @@ export async function GET(context) {
   blog.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   return rss({
-    title: '我的技术博客',
-    description: '记录技术探索与个人随笔',
+    title: 'Lasuac的博客',
+    description: '技术、生活、游戏、思考……',
     site: context.site,
     items: blog.map((post) => ({
       title: post.data.title,
